@@ -86,7 +86,7 @@
                 [_citiesarr addObject:city];
                 [_arr addObject:city.Cityat];
                NSLog(@"%@",_citiesarr);
-               // NSLog(@"%@",city);
+             ///  // NSLog(@"%@",city);
                 [_CityTableView reloadData];
             }
         }
