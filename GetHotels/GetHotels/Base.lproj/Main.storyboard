@@ -1580,7 +1580,7 @@
                                         <rect key="frame" x="0.0" y="202" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bUI-t9-iRs" id="kPg-we-zSO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1806,9 +1806,9 @@
         <image name="aviation" width="44" height="44"/>
         <image name="hotel" width="44" height="44"/>
         <image name="hotels" width="165" height="123"/>
-        <image name="img" width="113" height="107"/>
-        <image name="img-1" width="113" height="107"/>
-        <image name="img-2" width="113" height="107"/>
+        <image name="img" width="52" height="44"/>
+        <image name="img-1" width="52" height="44"/>
+        <image name="img-2" width="52" height="44"/>
         <image name="map" width="35" height="43"/>
         <image name="more1" width="20" height="37"/>
         <image name="my" width="44" height="44"/>

@@ -61,6 +61,7 @@
 		845D5C0E1F4D37C00007F91D /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D5C0D1F4D37C00007F91D /* HotelViewController.m */; };
 		845D5C111F4D37DA0007F91D /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D5C101F4D37DA0007F91D /* MyInfoViewController.m */; };
 		845D5C171F4D38AB0007F91D /* MyHotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D5C161F4D38AB0007F91D /* MyHotelTableViewCell.m */; };
+		848EBAED1F583B840086B66D /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EBAEC1F583B840086B66D /* PayViewController.m */; };
 		84DC0DAB1F5168EE00A149C8 /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DC0DAA1F5168EE00A149C8 /* CityViewController.m */; };
 		84F6FBDB1F5580D100035215 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6FBDA1F5580D100035215 /* UserModel.m */; };
 		84FDF52A1F4D6B3F006AD2A8 /* MyHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDF5291F4D6B3F006AD2A8 /* MyHotelViewController.m */; };
@@ -195,6 +196,8 @@
 		845D5C101F4D37DA0007F91D /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
 		845D5C151F4D38AB0007F91D /* MyHotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHotelTableViewCell.h; sourceTree = "<group>"; };
 		845D5C161F4D38AB0007F91D /* MyHotelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHotelTableViewCell.m; sourceTree = "<group>"; };
+		848EBAEB1F583B840086B66D /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		848EBAEC1F583B840086B66D /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		84DC0DA91F5168EE00A149C8 /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
 		84DC0DAA1F5168EE00A149C8 /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
 		84F6FBD91F5580D100035215 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -489,6 +492,8 @@
 				842381E01F4E7A22007A3817 /* LoginViewController.m */,
 				843D4A171F53A8E8005C2AD0 /* SiginInViewController.h */,
 				843D4A181F53A8E8005C2AD0 /* SiginInViewController.m */,
+				848EBAEB1F583B840086B66D /* PayViewController.h */,
+				848EBAEC1F583B840086B66D /* PayViewController.m */,
 			);
 			name = MyInfoViewController;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				8412D92B1F5027D50027BF29 /* NSDataEx.m in Sources */,
 				8412D9391F5027D50027BF29 /* Utilities.m in Sources */,
 				845D5BC61F4D12FA0007F91D /* AppDelegate.m in Sources */,
+				848EBAED1F583B840086B66D /* PayViewController.m in Sources */,
 				84474AF11F4FE1F900089186 /* Order.m in Sources */,
 				8412D9271F5027D50027BF29 /* base64.m in Sources */,
 				84FDF52A1F4D6B3F006AD2A8 /* MyHotelViewController.m in Sources */,
