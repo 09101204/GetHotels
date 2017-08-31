@@ -49,6 +49,7 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
+
 #pragma mark - table view
 //有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
