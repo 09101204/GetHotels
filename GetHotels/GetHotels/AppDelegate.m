@@ -7,17 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import <ECSlidingViewController/ECSlidingViewController.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<ECSlidingViewControllerDelegate>
+
+@property (strong, nonatomic)ECSlidingViewController *slidingVC;
 
 @end
 
 @implementation AppDelegate
 
-
+////整个app第一个会执行的逻辑方法
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    return YES;
+    //初始化窗口（不用故事版设置入口箭头的时候，系统不会默认设置窗口，需要手动设置
+       return YES;
 }
 
 
@@ -49,10 +53,35 @@
     [self saveContext];
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation{
+    //判断是不是从支付宝App跳转到本App
+    if ([url.host isEqualToString:@"safapay"]){
+        //获取支付宝支付的结果
+        [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
+            //获取支付结果具体内容（成功或者失败）
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"AlipayResult" object:@[@"resultStatus"]];
+            
+        }];
+    }
+    
+    return  YES;
+}
 
 #pragma mark - Core Data stack
 
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentContainer = _persistentContainer;
+
+- (NSManagedObjectModel *)managedObjectModel {
+    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
+    }
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"GetHotels" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return _managedObjectModel;
+}
 
 - (NSPersistentContainer *)persistentContainer {
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.

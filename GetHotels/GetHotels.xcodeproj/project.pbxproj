@@ -395,8 +395,8 @@
 		845D5BC11F4D12FA0007F91D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				845D5BC51F4D12FA0007F91D /* AppDelegate.m */,
 				845D5BC41F4D12FA0007F91D /* AppDelegate.h */,
+				845D5BC51F4D12FA0007F91D /* AppDelegate.m */,
 				845D5BD51F4D12FA0007F91D /* Info.plist */,
 				843D4A1B1F53AA05005C2AD0 /* Cities.plist */,
 				845D5BC21F4D12FA0007F91D /* main.m */,
@@ -445,8 +445,8 @@
 		845D5BFA1F4D14490007F91D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				845D5BCD1F4D12FA0007F91D /* GetHotels.xcdatamodeld */,
 				84474AEF1F4FE1F900089186 /* Order.h */,
+				845D5BCD1F4D12FA0007F91D /* GetHotels.xcdatamodeld */,
 				84474AF01F4FE1F900089186 /* Order.m */,
 				843D4A201F53B592005C2AD0 /* HotelModel.h */,
 				843D4A211F53B592005C2AD0 /* HotelModel.m */,
