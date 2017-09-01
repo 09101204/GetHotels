@@ -8,11 +8,16 @@
 
 #import "MyInfoViewController.h"
 #import "MyHotelTableViewCell.h"
+#import "UserModel.h"
 @interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *HeadImage;
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *GradeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *MyInfoTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *star1;
+@property (weak, nonatomic) IBOutlet UIImageView *star2;
+@property (weak, nonatomic) IBOutlet UIImageView *star3;
+
 @property (strong, nonatomic) NSArray *myInfoArr;
 @end
 
@@ -35,6 +40,23 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    UserModel *user=[[StorageMgr singletonStorageMgr]objectForKey:@"UserInfo"];
+    UIImage  *stars=[UIImage imageNamed:@"star"];
+    switch (user.state) {
+        case 1:
+            _star1.image=stars;
+            break;
+        case 2:
+            _star1.image=stars;
+            _star2.image=stars;
+        case 3:
+            _star1.image=stars;
+            _star2.image=stars;
+            _star3.image=stars;
+        default:
+            break;
+    }
+
 }
 - (void)naviConfig {
     //设置导航条标题文字
