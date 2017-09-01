@@ -16,5 +16,6 @@
 @property(strong,nonatomic) NSString *HotelImage;
 @property(strong,nonatomic) NSString *adImage;
 @property(strong,nonatomic) NSString *startTime;
+@property(strong,nonatomic) NSString *price;
 - (instancetype)initWithDictForHotelCell: (NSDictionary *)dict;
 @end
