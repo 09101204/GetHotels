@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5B-6O-GKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="132"/>
+            <point key="canvasLocation" x="1998" y="121"/>
         </scene>
         <!--我的-->
         <scene sceneID="wDu-4N-68f">
@@ -733,7 +733,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMB-7x-BSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3266" y="-1281"/>
+            <point key="canvasLocation" x="4204" y="-1281.4092953523239"/>
         </scene>
         <!--GetHotels-->
         <scene sceneID="gnd-S6-gI0">
@@ -769,21 +769,8 @@
                                             <action selector="WeatherBtn:forEvent:" destination="z6W-Z4-BKQ" eventType="touchUpInside" id="rEx-gZ-OM1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLR-0N-qXe">
-                                        <rect key="frame" x="40" y="16.5" width="30" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Zx2-Pp-Tag"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="无锡">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="3rc-Mp-asX" kind="show" id="vUB-ze-EZW"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="s2z-n0-JLC">
-                                        <rect key="frame" x="20" y="22.5" width="15" height="15"/>
+                                        <rect key="frame" x="10" y="22.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="PIJ-D3-33a"/>
                                             <constraint firstAttribute="width" secondItem="s2z-n0-JLC" secondAttribute="height" multiplier="1:1" id="RrT-zZ-6gf"/>
@@ -796,6 +783,20 @@
                                             <constraint firstAttribute="height" constant="20" id="fxX-bv-EK7"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLR-0N-qXe">
+                                        <rect key="frame" x="26" y="16" width="48" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Zx2-Pp-Tag"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <size key="titleShadowOffset" width="1" height="0.0"/>
+                                        <state key="normal" title="无锡">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RKx-qn-jwB" kind="show" id="vUB-ze-EZW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.3060851611" green="0.58274607879999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -803,12 +804,12 @@
                                     <constraint firstAttribute="trailing" secondItem="Gbk-ar-IMo" secondAttribute="trailing" constant="15" id="1vX-Zo-XyO"/>
                                     <constraint firstItem="hp3-MJ-spZ" firstAttribute="centerY" secondItem="raQ-ya-Aob" secondAttribute="centerY" id="7sJ-TB-bss"/>
                                     <constraint firstItem="s2z-n0-JLC" firstAttribute="centerY" secondItem="raQ-ya-Aob" secondAttribute="centerY" multiplier="1:1" id="9YR-wZ-b7u"/>
-                                    <constraint firstItem="s2z-n0-JLC" firstAttribute="leading" secondItem="raQ-ya-Aob" secondAttribute="leading" constant="20" id="CW7-vG-CIm"/>
+                                    <constraint firstItem="s2z-n0-JLC" firstAttribute="leading" secondItem="raQ-ya-Aob" secondAttribute="leading" constant="10" id="CW7-vG-CIm"/>
                                     <constraint firstItem="KLR-0N-qXe" firstAttribute="centerY" secondItem="raQ-ya-Aob" secondAttribute="centerY" id="DlO-IB-j4m"/>
                                     <constraint firstAttribute="trailing" secondItem="cVm-M7-KWk" secondAttribute="trailing" constant="80" id="JbV-TW-wUt"/>
                                     <constraint firstItem="cVm-M7-KWk" firstAttribute="leading" secondItem="raQ-ya-Aob" secondAttribute="leading" constant="80" id="dHQ-H9-2Q3"/>
                                     <constraint firstItem="Gbk-ar-IMo" firstAttribute="centerY" secondItem="raQ-ya-Aob" secondAttribute="centerY" id="kvU-qI-Lip"/>
-                                    <constraint firstItem="cVm-M7-KWk" firstAttribute="leading" secondItem="KLR-0N-qXe" secondAttribute="trailing" constant="10" id="qEZ-Xs-qcW"/>
+                                    <constraint firstItem="cVm-M7-KWk" firstAttribute="leading" secondItem="KLR-0N-qXe" secondAttribute="trailing" constant="6" id="qEZ-Xs-qcW"/>
                                     <constraint firstAttribute="height" constant="60" id="uss-Zg-jbC"/>
                                     <constraint firstItem="cVm-M7-KWk" firstAttribute="centerY" secondItem="raQ-ya-Aob" secondAttribute="centerY" id="xno-VJ-A93"/>
                                 </constraints>
@@ -862,9 +863,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="距离我3.5公里" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kg-IZ-qmR">
-                                                    <rect key="frame" x="102" y="70" width="67" height="12"/>
+                                                    <rect key="frame" x="173" y="70" width="67" height="11"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -885,9 +886,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="无锡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbf-Gg-o8N">
-                                                    <rect key="frame" x="185" y="44" width="87" height="6"/>
+                                                    <rect key="frame" x="173" y="44" width="87" height="6"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1094,7 +1095,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3L-2M-z1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792.8" y="-595.05247376311854"/>
+            <point key="canvasLocation" x="1709.5999999999999" y="-609.44527736131943"/>
         </scene>
         <!--Hotel Detail View Controller-->
         <scene sceneID="Yhd-DC-BAg">
@@ -1659,6 +1660,24 @@
             </objects>
             <point key="canvasLocation" x="788" y="-575.26236881559225"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q5I-ke-5zY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RKx-qn-jwB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8by-ZK-fO9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3rc-Mp-asX" kind="relationship" relationship="rootViewController" id="eo3-WC-348"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zI3-JE-Och" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3264.8000000000002" y="-1281.4092953523239"/>
+        </scene>
     </scenes>
     <resources>
         <image name="aviation" width="44" height="44"/>
@@ -1674,7 +1693,7 @@
         <image name="收起" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KB8-yl-Biy"/>
         <segue reference="LO9-zz-5FZ"/>
+        <segue reference="t4L-Wy-Ry2"/>
     </inferredMetricsTieBreakers>
 </document>

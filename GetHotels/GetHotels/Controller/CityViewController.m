@@ -65,9 +65,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //根据组的名称作为键，来查询到对应的值（这个值就是这一组城市对应城市数组）
     CityModel *cityModel = _citiesarr[indexPath.section];
+    
     [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:[NSNotification notificationWithName:@"ResetHome" object:cityModel.Cityarr[indexPath.row]] waitUntilDone:YES];
     //跳转
     [self dismissViewControllerAnimated:YES completion:nil];
+     //[self performSegueWithIdentifier:@"cellToHotel" sender:self];
 }
     //设置右侧快捷键的栏
     - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -85,10 +87,10 @@
                 CityModel *city = [[CityModel alloc]initWithDictionary:dict];
                 [_citiesarr addObject:city];
                 [_arr addObject:city.Cityat];
-               NSLog(@"%@",_citiesarr);
+               //NSLog(@"%@",_citiesarr);
                // NSLog(@"%@",city);
-                [_CityTableView reloadData];
             }
+            [_CityTableView reloadData];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         

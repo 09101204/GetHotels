@@ -11,6 +11,11 @@
 #import "HotelModel.h"
 #import <CoreLocation/CoreLocation.h>
 @interface HotelViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,CLLocationManagerDelegate>{
+    NSInteger pageNum;
+    NSInteger pageSize;
+    NSString *cityName;
+    NSString * jinDu;
+    NSString * weiDu;
     BOOL firstVisit;
 }
 @property(strong,nonatomic) CLLocationManager *locMgr;
@@ -28,6 +33,7 @@
 @property (strong, nonatomic) NSString *date2;
 @property (strong, nonatomic) NSMutableArray *HotelArr;
 @property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) UIActivityIndicatorView *avi;
 
 
 
@@ -39,13 +45,19 @@
     [super viewDidLoad];
     _HotelArr = [NSMutableArray new];
    [self naviConfig];
+    [self setDefaultTime];
    [self networkRequest];
+    [self dataInitialize];
+    [self locationConfig];
+    
     // Do any additional setup after loading the view.
     /*_HotelArr = @[@{@"HotelImage":@"hotels",@"HotelLabel":@"无锡万达喜来登酒店",@"HotelAdressLabel":@"无锡",@"HotelDistanceLabel":@"距离我3.5公里"},@{@"HotelImage":@"hotels",@"HotelLabel":@"无锡万达喜来登酒店",@"HotelAdressLabel":@"无锡",@"HotelDistanceLabel":@"距离我3.5公里"},@{@"HotelImage":@"hotels",@"HotelLabel":@"无锡万达喜来登酒店",@"HotelAdressLabel":@"无锡",@"HotelDistanceLabel":@"距离我3.5公里"}];
      */
     //去掉tableview底部多余的线
     _HotelTableView.tableFooterView = [UIView new ];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +69,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self locationStart];
 }
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_locMgr stopUpdatingLocation];
+}
+
 - (void)naviConfig {
     //设置导航条标题文字
     self.navigationItem.title = @"GetHotels";
@@ -88,7 +106,7 @@
     //根据行号拿到数组中对应的数据
     //NSDictionary *dict = _HotelArr[indexPath.section];
     HotelModel *hotelmodel = _HotelArr[indexPath.row];
-    cell.MoneyLabel.text = [NSString stringWithFormat:@"%ld",hotelmodel.HotelPrice];
+    cell.MoneyLabel.text = [NSString stringWithFormat:@"¥:%ld",hotelmodel.HotelPrice];
     //cell.HotelImage.image = [UIImage imageNamed:dict[@"HotelImage"]];
     //NSLog(@"1357%ld",hotelmodel.HotelPrice);
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:hotelmodel.HotelImage] placeholderImage:[UIImage imageNamed:@"hotels"]];
@@ -109,13 +127,15 @@
      //明天的日期
     NSDate *tomorrow = [NSDate dateTomorrow];
     //定义日期的格式为yyyy-MM-dd
-    formatter2.dateFormat = @"yyyy-MM-ddTHH:mm:ss.SSSZ";
+    //formatter2.dateFormat = @"yyyy-MM-ddTHH:mm:ss.SSSZ";
+    formatter2.dateFormat = @"yyyy-MM-dd";
     formatter.dateFormat = @"yyyy-MM-dd";
     _date1 = [formatter2 stringFromDate:today];
     _date2 = [formatter2 stringFromDate:tomorrow];
     
-  
-
+   //pageSize = 1;
+    //pageNum = 1;
+    //cityName = @"上海";
 }
 #pragma mark - Navigation
 
@@ -125,7 +145,7 @@
     // Pass the selected object to the new view controller.
 }
 - (void)dataInitialize {
-    //_avi = [Utilities getCoverOnView:self.view];
+    _avi = [Utilities getCoverOnView:self.view];
     BOOL appInit = NO;
     if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
         //是第一次打开APP
@@ -148,30 +168,8 @@
     }
     
     firstVisit = YES;
-    
-    
 }
-
-  #pragma mark - request
-
--(void)networkRequest{
-    //NSDictionary *para = @{@"city_name":@,@"pageNum":@6,@":startId":@1,@"priceId":@2,@"sortingId":@3,@"inTime":_date1,@"outTime":_date2,};
-    NSDictionary *para = @{@"id":@2};
-    [RequestAPI requestURL:@"/findHotelById"  withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-      // NSLog(@"responseObject: %@", responseObject);
-        NSDictionary *dict = responseObject[@"content"];
-        HotelModel *model = [[HotelModel alloc] initWithDictForHotelCell:dict];
-        [_HotelArr addObject:model];
-        //NSLog(@"%ld",model.HotelPrice);
-        [_HotelTableView reloadData];
-    } failure:^(NSInteger statusCode, NSError *error) {
-        
-    }];
-}
-   - (IBAction)WeatherBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-}
-#pragma mark - location
-
+#pragma mark - loction
 //这个方法专门处理定位的基本设置
 - (void)locationConfig {
     //初始化
@@ -200,6 +198,9 @@
     [_locMgr startUpdatingLocation];
     
 }
+
+
+
 //定位失败时
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
@@ -244,6 +245,8 @@
     [self getRegeoViaCoordinate];
     
 }
+
+
 - (void)getRegeoViaCoordinate {
     //duration表示从NOW开始过三个SEC
     dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
@@ -274,9 +277,9 @@
                             //修改城市按钮标题
                             [_SelectAdressBtn setTitle:cityStr forState:UIControlStateNormal];
                             //删除记忆体
-                            [Utilities removeUserDefaults:@"MemoryCity"];
+                            [Utilities removeUserDefaults:@"UserCity"];
                             //添加记忆体
-                            [Utilities setUserDefaults:@"MemoryCity" content:cityStr];
+                            [Utilities setUserDefaults:@"UserCity" content:cityStr];
                             //网络请求
                             [self networkRequest];
                             
@@ -294,18 +297,43 @@
     });
     
 }
+
+#pragma mark - notification
+
 - (void)checkCityState: (NSNotification *)note {
     NSString *cityStr = note.object;
     if (![_SelectAdressBtn.titleLabel.text isEqualToString:cityStr]) {
         //修改城市按钮标题
         [_SelectAdressBtn setTitle:cityStr forState:UIControlStateNormal];
         //删除记忆体
-        [Utilities removeUserDefaults:@"MemoryCity"];
+        [Utilities removeUserDefaults:@"UserCity"];
         //添加记忆体
-        [Utilities setUserDefaults:@"MemoryCity" content:cityStr];
+        [Utilities setUserDefaults:@"UserCity" content:cityStr];
         //重新执行网络请求
         [self networkRequest];
     }
+}
+
+
+  #pragma mark - request
+
+-(void)networkRequest{
+//    NSDictionary *para = @{@"city_name":cityName,@"pageNum":@6,@"pageSize":@1,@":startId":@1,@"priceId":@2,@"sortingId":@1,@"inTime":_date1,@"outTime":_date2,@"wxlongitude":@"30.4",@"wxlatitude":@"120.23"};
+                           //NSLog(@"%ld",model.HotelPrice);
+    NSDictionary *para = @{@"id":@7};
+    [RequestAPI requestURL:@"/findHotelById"  withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        // NSLog(@"responseObject: %@", responseObject);
+        NSDictionary *dict = responseObject[@"content"];
+        HotelModel *model = [[HotelModel alloc] initWithDictForHotelCell:dict];
+        [_HotelArr addObject:model];
+        //NSLog(@"%ld",model.HotelPrice);
+        [_HotelTableView reloadData];
+        [_avi stopAnimating];
+    } failure:^(NSInteger statusCode, NSError *error) {
+        
+    }];
+}
+   - (IBAction)WeatherBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 
 @end
